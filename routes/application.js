@@ -10,7 +10,7 @@ router.post("/apply", async (req, res) => {
     });
     if (isApplicantExist) {
       return res.status(202).json({
-        message: `Hey! ${isApplicantExist?.fistName}your application has been arleady received succesfully`,
+        message: `Hey! ${isApplicantExist?.fistName}, your application has been arleady received succesfully`,
       });
     } else {
       const savedApplication = await Application.create(req.body);
