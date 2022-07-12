@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Application = require("../models/ApplicationForm");
-const Email = require("../utils/mail");
+const sendEmail = require("../utils/mail");
 
 router.post("/apply", async (req, res) => {
   try {
@@ -10,14 +10,14 @@ router.post("/apply", async (req, res) => {
     });
     if (isApplicantExist) {
       return res.status(202).json({
-        message: `Hey! ${isApplicantExist?.fistName}your application has been arleady received succesfully,  Now schedule for interview`,
+        message: `Hey! ${isApplicantExist?.fistName}your application has been arleady received succesfully`,
       });
     } else {
       const savedApplication = await Application.create(req.body);
-      const firstName = req.body.firstName;
+      sendEmail(req.body);
 
       return res.status(200).json({
-        message: `Thank you! ${firstName}, your application has been received successfuly`,
+        message: `Thank you! ${isApplicantExist?.firstName}, your application has been received successfuly`,
 
         data: savedApplication,
       });

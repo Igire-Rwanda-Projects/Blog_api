@@ -13,9 +13,9 @@ const sendFunc = async (options) => {
   });
   let mailOptions = {
     from: "kacynthian@gmail.com",
-    to: "yamubbenjamin@gmail.com",
+    to: options?.email,
     subject: `Congratulation @ShecanCODE`,
-    html: `congratulation now you can follow the next steps. below is the challenge to go to the next steps `,
+    html: `congratulation ${options?.firstName} now you can follow the next steps. below is the challenge to go to the next steps `,
     attachments: [
       {
         filename: "challenge.pdf",
