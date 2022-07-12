@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Application = require("../models/ApplicationForm");
+const Email = require("../utils/mail");
 
 router.post("/apply", async (req, res) => {
   try {
@@ -13,8 +14,10 @@ router.post("/apply", async (req, res) => {
       });
     } else {
       const savedApplication = await Application.create(req.body);
+      const firstName = req.body.firstName;
+
       return res.status(200).json({
-        message: `Thank you! ${isApplicantExist?.fistName}, your application has been received successfuly, Kindly make schedule for interview`,
+        message: `Thank you! ${firstName}, your application has been received successfuly`,
 
         data: savedApplication,
       });
@@ -30,6 +33,19 @@ router.get("/all", async (req, res) => {
       message: "success retreived all application",
       results: apps.length,
       data: apps,
+    });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const user = await Application.findByIdAndDelete(req.params.id);
+    return res.status(200).json({
+      message: "Applicant successfully deleted",
+
+      data: user,
     });
   } catch (err) {
     return res.status(500).json(err);

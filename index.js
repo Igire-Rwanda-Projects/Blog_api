@@ -9,8 +9,15 @@ import applicationRoute from "./routes/application";
 import multer from "multer";
 import path from "path";
 import cors from "cors";
+import sendFunc from "./utils/mail";
 const { cloudinary } = require("./utils/cloudinary");
 const app = express();
+
+app.post("/email", (req, res) => {
+  console.log(req.body);
+  sendFunc(req.body);
+  res.json({ message: "Message received!" });
+});
 
 app.use(express.static("public"));
 app.use(express.json({ limit: "50mb" }));
