@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node  ./index.js",
+    "dev-start": "nodemon --exec babel-node  ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "laetitia",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.12.10",
+    "@types/node": "^14.14.22",
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.3",
+    "heroku": "^7.59.2",
+    "mongoose": "^6.0.10",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.13",
+    "path": "^0.12.7"
+  }
+}
