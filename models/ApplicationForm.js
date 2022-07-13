@@ -90,7 +90,7 @@ const applicationFormShema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("ApplicationCohort6", applicationFormShema);
+module.exports = mongoose.model("ApplicationCohort7", applicationFormShema);
 // export default applicationType;
 
 // module.exports = mongoose.model("ApplicationType", applicationFormShema);
