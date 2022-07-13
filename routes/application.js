@@ -22,7 +22,7 @@ router.post("/apply", async (req, res) => {
       });
     }
   } catch (err) {
-    return res.status(401).json(err);
+    return res.status(500).json(err);
   }
 });
 router.get("/all", async (req, res) => {
