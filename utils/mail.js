@@ -24,8 +24,8 @@ const sendFunc = async (options) => {
       },
     ],
   };
- 
 
+  console.log(options?.email);
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       console.error(err);

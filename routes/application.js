@@ -4,26 +4,25 @@ const sendEmail = require("../utils/mail");
 
 router.post("/apply", async (req, res) => {
   try {
-    // console.log(req.body);
+    console.log(req.body);
     const isApplicantExist = await Application.findOne({
       email: req.body.email.trim(),
     });
     if (isApplicantExist) {
       return res.status(202).json({
-        message: `Hey! ${isApplicantExist?.fistName}, your application has been arleady received succesfully`,
+        message: `Hey! ${isApplicantExist?.firstName}, your application has been arleady received succesfully`,
       });
     } else {
       const savedApplication = await Application.create(req.body);
-      sendEmail(req.body);
+      // sendEmail(req.body);
 
       return res.status(200).json({
         message: `Thank you! ${isApplicantExist?.firstName}, your application has been received successfuly`,
-
         data: savedApplication,
       });
     }
   } catch (err) {
-    return res.status(500).json(err);
+    return res.status(401).json(err);
   }
 });
 router.get("/all", async (req, res) => {

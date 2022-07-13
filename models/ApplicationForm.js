@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const applicationFormShema = new mongoose.Schema(
   {
-    fistName: {
+    firstName: {
       type: String,
     },
     lastName: {
@@ -10,7 +10,6 @@ const applicationFormShema = new mongoose.Schema(
     },
     email: {
       type: String,
-      
     },
     phone: {
       type: String,
