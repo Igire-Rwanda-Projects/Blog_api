@@ -13,9 +13,9 @@ const sendFunc = async (options) => {
   });
   let mailOptions = {
     from: "kacynthian@gmail.com",
-    to: options?.email,
+    to: options.email,
     subject: `Congratulation @ShecanCODE`,
-    html: `congratulation ${options?.firstName} now you can follow the next steps. below is the challenge to go to the next steps `,
+    html: `Dear Applicant,<br/><br/><br/> Igire Rwanda Organzation and UN Women Rwanda thank you for your interest in our program. we congratulate you for completing the application form.<br/><br/>As part of the application process, we have attached a coding challenge to further evaluate your qualification for the program. Please focus on it and submit your response within 3days from now.<br/><br/>After submit your responses, we will reach out to you with the next steps.<br/><br/>Please let us know if you have any questions or concerns.<br/><br/><br/><br/>Regards<br/>shecancode Management`,
     attachments: [
       {
         filename: "challenge.pdf",
@@ -25,7 +25,6 @@ const sendFunc = async (options) => {
     ],
   };
 
-  console.log(options?.email);
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       console.error(err);

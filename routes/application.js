@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Application = require("../models/ApplicationForm");
-const sendEmail = require("../utils/mail");
+import sendFunc from "../utils/mail";
 
 router.post("/apply", async (req, res) => {
   try {
@@ -14,12 +14,11 @@ router.post("/apply", async (req, res) => {
     //   });
     // } else {
     const savedApplication = await Application.create(req.body);
-    // sendEmail(req.body);
 
     return res.status(200).json({
       message: `your application has been receive.We shall communicate the next step via email`,
 
-      data: savedApplication,
+      data: sendFunc(req.body),
     });
   } catch (err) {
     return res.status(500).json(err);
