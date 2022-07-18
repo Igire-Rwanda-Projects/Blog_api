@@ -5,14 +5,15 @@ import sendFunc from "../utils/mail";
 router.post("/apply", async (req, res) => {
   try {
     // console.log(req.body);
-    // const isApplicantExist = await Application.findOne({
-    //   email: req.body.email.trim(),
-    // });
-    // if (isApplicantExist) {
-    //   return res.status(202).json({
-    //     message: `Hey! ${isApplicantExist?.firstName} your application has been arleady received succesfully,  Now schedule for interview`,
-    //   });
-    // } else {
+    const isApplicantExist = await Application.findOne({
+      email: req.body.email.trim(),
+    });
+    if (isApplicantExist) {
+      return res.status(400).json({
+        message: `Hey! ${isApplicantExist?.firstName} your application has been arleady received succesfully, Kindly work on Challenge`,
+      });
+    } 
+    
     const savedApplication = await Application.create(req.body);
 
     return res.status(200).json({
