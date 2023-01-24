@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const NewApllicationSchema = new mongoose.Schema({
   firstName: String,
-  secondName: String,
+  lastName: String,
   email: {
     type: String,
     required: true,
@@ -16,6 +16,10 @@ const NewApllicationSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  gender: {
+    type: String,
+    enum: ["female", "male"],
+  },
   educationLevel: String,
   programName: {
     type: String,
@@ -23,12 +27,17 @@ const NewApllicationSchema = new mongoose.Schema({
   },
   programTime: {
     type: String,
-    enum: ["day", "evening", "weekend"],
+    enum: ["day", "evening"],
     default: "day",
   },
   comment: String,
+  status: {
+    type: String,
+    enum: ["pending", "accepted", "denied"],
+    default: "pending",
+  },
 });
 
-const applications = mongoose.model("Application", NewApllicationSchema);
+const applications = mongoose.model("ApplicationCohort8", NewApllicationSchema);
 
 export default applications;
