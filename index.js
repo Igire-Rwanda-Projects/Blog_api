@@ -6,6 +6,7 @@ import userRoute from "./routes/users";
 import postRoute from "./routes/posts";
 import categoryRoute from "./routes/category";
 import applicationRoute from "./routes/application";
+import applicationsRoute from "./routes/applicationNewRoute";
 import multer from "multer";
 import path from "path";
 import cors from "cors";
@@ -28,7 +29,7 @@ app.use(express.json());
 // to make image displayed
 app.use("/api/images", express.static(path.join(__dirname, "/images")));
 // app.get('/', (req, res) => { res.send('Hello from Express!')
-
+mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
@@ -77,7 +78,8 @@ app.post("/api/upload", async (req, res) => {
 app.use("/api/auth", authRoute),
   app.use("/api/users", userRoute),
   app.use("/api/posts", postRoute),
-  app.use("/api/category", categoryRoute);
+  app.use("/apply", applicationsRoute);
+app.use("/api/category", categoryRoute);
 app.use("/api/application", applicationRoute);
 app.use("/", (req, res) => {
   return res.status(202).json({
