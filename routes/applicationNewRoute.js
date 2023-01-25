@@ -6,6 +6,10 @@ const applicationsRoute = express.Router();
 applicationsRoute.post("/create", applicationNewController.createApplication);
 applicationsRoute.get("/all", applicationNewController.getApplications);
 applicationsRoute.get("/get/:id", applicationNewController.getOneApplication);
+applicationsRoute.get(
+  "/applicant/:programName",
+  applicationNewController.getApplicationInProgram
+);
 applicationsRoute.patch(
   "/update/:id",
   applicationNewController.updateOneApplication

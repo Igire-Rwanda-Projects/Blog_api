@@ -59,6 +59,16 @@ class applicationNewController {
       data: deletedApplication,
     });
   }
+  static async getApplicationInProgram(req, res) {
+    const application = await applicationNewInfo.find({
+      programName: req.params.programName,
+    });
+    if (application.length > 0) {
+      res.status(200).json(application);
+    } else {
+      res.status(400).json("no student in such program");
+    }
+  }
 }
 
 export default applicationNewController;
