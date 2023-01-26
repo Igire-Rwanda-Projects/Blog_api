@@ -78,7 +78,7 @@ app.post("/api/upload", async (req, res) => {
 app.use("/api/auth", authRoute),
   app.use("/api/users", userRoute),
   app.use("/api/posts", postRoute),
-  app.use("/apply", applicationsRoute);
+  app.use("/api/apply", applicationsRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/application", applicationRoute);
 app.use("/", (req, res) => {
