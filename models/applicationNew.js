@@ -16,6 +16,10 @@ const NewApllicationSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  calendar: {
+    date: String,
+    time: String,
+  },
   gender: {
     type: String,
     enum: ["female", "male"],
