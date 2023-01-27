@@ -1,5 +1,9 @@
 import applicationNewInfo from "../models/applicationNew";
+
+import sendFunc from "../utils/mail";
+
 import validator from 'validator';
+
 
 class applicationNewController {
   static async createApplication(req, res) {
@@ -14,7 +18,10 @@ class applicationNewController {
     }
     return res
       .status(200)
-      .json({ data: "applications created successfully", data: applications });
+      .json({
+        data: "applications created successfully",
+        data: sendFunc(applications),
+      });
   }
 
   static async getApplications(req, res) {
