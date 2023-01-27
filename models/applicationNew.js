@@ -35,9 +35,10 @@ const NewApllicationSchema = new mongoose.Schema({
     default: "day",
   },
   comment: String,
+  timeSchedule: String,
   status: {
     type: String,
-    enum: ["pending", "accepted", "denied","scheduled"],
+    enum: ["pending", "accepted", "denied", "scheduled"],
     default: "pending",
   },
 });

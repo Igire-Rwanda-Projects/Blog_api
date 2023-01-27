@@ -77,9 +77,19 @@ class applicationNewController {
       programName: req.params.programName,
     });
     if (application.length > 0) {
-      res.status(200).json(application);
+      res.status(200).json({ application, size: application.length });
     } else {
       res.status(400).json("no student in such program");
+    }
+  }
+  static async getApplicationInProgramTime(req, res) {
+    const applicationClass = await applicationNewInfo.find({
+      programTime: req.params.programTime,
+    });
+    if (applicationClass.length > 0) {
+      res.status(200).json({ applicationClass, size: applicationClass.length });
+    } else {
+      res.status(400).json("no student in such class");
     }
   }
 }

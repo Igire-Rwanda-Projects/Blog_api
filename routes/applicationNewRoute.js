@@ -10,6 +10,10 @@ applicationsRoute.get(
   "/applicant/:programName",
   applicationNewController.getApplicationInProgram
 );
+applicationsRoute.get(
+  "/:programTime",
+  applicationNewController.getApplicationInProgramTime
+);
 applicationsRoute.patch(
   "/update/:id",
   applicationNewController.updateOneApplication
