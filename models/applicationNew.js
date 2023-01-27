@@ -16,6 +16,10 @@ const NewApllicationSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  calendar: {
+    date: String,
+    time: String,
+  },
   gender: {
     type: String,
     enum: ["female", "male"],
@@ -33,7 +37,7 @@ const NewApllicationSchema = new mongoose.Schema({
   comment: String,
   status: {
     type: String,
-    enum: ["pending", "accepted", "denied"],
+    enum: ["pending", "accepted", "denied","scheduled"],
     default: "pending",
   },
 });

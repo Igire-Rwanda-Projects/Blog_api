@@ -1,7 +1,13 @@
 import applicationNewInfo from "../models/applicationNew";
+import validator from 'validator';
 
 class applicationNewController {
   static async createApplication(req, res) {
+    const checkApplicant = await applicationNewInfo.findOne({$or:[{email:req.body.email},{telephone:req.body.telephone}]});
+    if(checkApplicant){
+
+      return res.status(404).json({ error: "Your Application has been arleady submitted " });
+    }
     const applications = await applicationNewInfo.create(req.body);
     if (!applications) {
       return res.status(404).json({ error: "applications not created" });
@@ -24,13 +30,20 @@ class applicationNewController {
   }
 
   static async getOneApplication(req, res) {
+    if(validator.isMongoId(req.params.id)){
     const application = await applicationNewInfo.findById(req.params.id);
     if (!application) {
       return res.status(404).json({ error: "application not found" });
     }
     return res
       .status(200)
-      .json({ message: "application found", data: application });
+      .json({ message: "application found", data: application });}
+      else{
+
+    return res
+    .status(400)
+    .json({ message: "Invalid Application ID"});
+      }
   }
   static async updateOneApplication(req, res) {
     const application = await applicationNewInfo.findByIdAndUpdate(
